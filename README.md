@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://giphy.com/clips/studiosoriginals-running-y0w00Bbj9CYgHFZMMz" alt="Project logo"></a>
+ <img width=200px height=200px src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnptdW1zZ3VrYnZ6MzRxMWViMXJ1cXhyc3ZleGY3ZGlnc3Rvbmt3NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2bUpP71bbVnZ3x7lgQ/giphy.gif" alt="Project logo"></a>
 </p>
 
 <h3 align="center">⚡️SpeedCalc</h3>
@@ -28,18 +28,18 @@ Ever run on a treadmill and wanted to calculate your speed from km/h to min/km o
 
 #### Available Calculations:
 
-- km/h to min/km
+- `km/h` to `min/km`
 - km/h to miles/h
 - km/h to min/mile
-
+  <br>
 - min/km to min/mile
 - min/km to km/h
 - min/km to miles/h
-
+  <br>
 - miles/h to km/h
 - miles/h to min/mile
 - miles/h to min/km
-
+  <br>
 - min/mile to min/km
 - min/mile to miles/h
 - min/mile to km/h
