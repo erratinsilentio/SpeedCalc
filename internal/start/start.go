@@ -47,5 +47,6 @@ func SpeedCalc() {
 		prompts.KmToMiles()
 		prompts.SpeedValues()
 		calculations.Convert()
+		prompts.DisplayResult()
 	}
 }

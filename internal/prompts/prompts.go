@@ -142,3 +142,10 @@ func SpeedValues() {
 
 	selections.SelectSpeedValue(fromValueString)
 }
+
+func DisplayResult() {
+	userSelections := selections.GetUserSelections()
+	result := userSelections["to"].SpeedValue
+
+	fmt.Printf("Result: %s\n", result)
+}

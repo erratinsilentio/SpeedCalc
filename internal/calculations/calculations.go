@@ -90,11 +90,51 @@ func Convert() {
 	fromSpeedValue := userSelections["from"].SpeedValue
 
 	toSpeedUnit := userSelections["to"].SpeedUnit
-	toSpeedValue := userSelections["to"].SpeedValue
 
-	// convert strings to floats
-	fmt.Println(fromSpeedUnit, fromSpeedValue)
-	fmt.Println(toSpeedUnit, toSpeedValue)
+	// miles/h to min/mile
 
-	// perform conversion
+	// min/mile to miles/h
+
+	// km/h to min/km
+
+	// min/km to km/h
+
+	// miles/h to km/h
+
+	// miles/h to min/km
+
+	// min/miles to min/km
+
+	// min/miles to km/h
+
+	// km/h to miles/h
+	if fromSpeedUnit == "km/h" && toSpeedUnit == "miles/h" {
+		result, err := KmPerHourToMilePerHour(fromSpeedValue)
+		if err != nil {
+			fmt.Println("Error while converting: %v", err)
+			return
+		}
+		resultToString := fmt.Sprintf("%.2f", result)
+		selections.SetResult(resultToString)
+		return
+	}
+
+	// km/h to min/miles
+
+	// min/km to miles/h
+
+	// min/km to min/miles
+
+}
+
+func KmPerHourToMilePerHour(s string) (f float64, e error) {
+	kmPerHour, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return 0.00, err
+	}
+
+	conversionFactor := 0.621371192
+	milesPerHour := kmPerHour * conversionFactor
+
+	return milesPerHour, nil
 }
