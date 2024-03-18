@@ -1,12 +1,10 @@
 # ⚡️SpeedCalc
 
-#### 🌱Description
+## 🌱Description
 
 Ever run on a treadmill and wanted to calculate your speed from km/h to min/km or the other way? Or maybe from miles to kilometers? With this simple CLI application written in Go, it's simple and blazingly fast! (even though it's not rust)
 
-###### Available Calculations:
-
-CALC FUNC:
+#### Available Calculations:
 
 - km/h to min/km
 - km/h to miles/h
@@ -23,3 +21,11 @@ CALC FUNC:
 - min/mile to min/km
 - min/mile to miles/h
 - min/mile to km/h
+
+## 🛠Setup:
+
+to be continued...
+
+#### How to use it?
+
+to be continued...
