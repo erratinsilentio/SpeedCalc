@@ -29,18 +29,21 @@ func SpeedCalc() {
 		prompts.MilesToMiles()
 		prompts.SpeedValues()
 		calculations.Convert()
+		prompts.DisplayResult()
 
 	case "kilometers to kilometers":
 		selections.SelectDistanceUnit("kilometers", "kilometers")
 		prompts.KmToKm()
 		prompts.SpeedValues()
 		calculations.Convert()
+		prompts.DisplayResult()
 
 	case "miles to kilometers":
 		selections.SelectDistanceUnit("miles", "kilometers")
 		prompts.MilesToKm()
 		prompts.SpeedValues()
 		calculations.Convert()
+		prompts.DisplayResult()
 
 	case "kilometers to miles":
 		selections.SelectDistanceUnit("kilometers", "miles")

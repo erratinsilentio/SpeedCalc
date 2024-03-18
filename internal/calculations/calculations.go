@@ -92,6 +92,16 @@ func Convert() {
 	toSpeedUnit := userSelections["to"].SpeedUnit
 
 	// miles/h to min/mile
+	if fromSpeedUnit == "miles/h" && toSpeedUnit == "min/mile" {
+		result, err := milesPerHourToMinPerMile(fromSpeedValue)
+		if err != nil {
+			fmt.Println("Error while converting: %v", err)
+			return
+		}
+		resultToString := fmt.Sprintf("%.2f", result)
+		selections.SetResult(resultToString)
+		return
+	}
 
 	// min/mile to miles/h
 
@@ -109,7 +119,7 @@ func Convert() {
 
 	// km/h to miles/h
 	if fromSpeedUnit == "km/h" && toSpeedUnit == "miles/h" {
-		result, err := KmPerHourToMilePerHour(fromSpeedValue)
+		result, err := kmPerHourToMilePerHour(fromSpeedValue)
 		if err != nil {
 			fmt.Println("Error while converting: %v", err)
 			return
@@ -127,7 +137,17 @@ func Convert() {
 
 }
 
-func KmPerHourToMilePerHour(s string) (f float64, e error) {
+func milesPerHourToMinPerMile(s string) (f float64, e error) {
+	milesPerHour, err := strconv.ParseFloat(s, 64)
+	if err != nil {
+		return 0.00, err
+	}
+
+	minutesPerMile := 60 / milesPerHour
+	return minutesPerMile, nil
+}
+
+func kmPerHourToMilePerHour(s string) (f float64, e error) {
 	kmPerHour, err := strconv.ParseFloat(s, 64)
 	if err != nil {
 		return 0.00, err
