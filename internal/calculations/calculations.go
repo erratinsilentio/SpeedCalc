@@ -1,6 +1,7 @@
 package calculations
 
 import (
+	"fmt"
 	"regexp"
 	"strconv"
 	"strings"
@@ -66,13 +67,34 @@ func CheckIfPromptIsValid(u, s string) (x bool, y string) {
 	return false, "Unknown error!"
 }
 
-func StringToFloat(s string) float64 {
-	//todo
+func StringToFloat(speedUnit, speedValue string) float64 {
+	switch speedValue {
+	case "km/h":
+		//todo
+	case "min/km":
+		//todo
+	case "miles/h":
+		//todo
+	case "min/mile":
+		//todo
+	}
+
 	return 0.00
 }
 
 func Convert() {
 	// check from and to units
+	userSelections := selections.GetUserSelections()
+
+	fromSpeedUnit := userSelections["from"].SpeedUnit
+	fromSpeedValue := userSelections["from"].SpeedValue
+
+	toSpeedUnit := userSelections["to"].SpeedUnit
+	toSpeedValue := userSelections["to"].SpeedValue
+
 	// convert strings to floats
+	fmt.Println(fromSpeedUnit, fromSpeedValue)
+	fmt.Println(toSpeedUnit, toSpeedValue)
+
 	// perform conversion
 }
