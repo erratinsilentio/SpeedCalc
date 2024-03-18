@@ -98,12 +98,25 @@ func Convert() {
 			fmt.Println("Error while converting: %v", err)
 			return
 		}
-		resultToString := fmt.Sprintf("%.2f", result)
+		resultToString, err := floatToTimeString(result)
+		if err != nil {
+			fmt.Println("Error while converting float to time string")
+		}
 		selections.SetResult(resultToString)
 		return
 	}
 
 	// min/mile to miles/h
+	if fromSpeedUnit == "min/mile" && toSpeedUnit == "miles/h" {
+		result, err := minPerMileToMilesPerHour(fromSpeedValue)
+		if err != nil {
+			fmt.Println("Error while converting: %v", err)
+			return
+		}
+		resultToString := fmt.Sprintf("%.2f", result)
+		selections.SetResult(resultToString)
+		return
+	}
 
 	// km/h to min/km
 
@@ -147,6 +160,19 @@ func milesPerHourToMinPerMile(s string) (f float64, e error) {
 	return minutesPerMile, nil
 }
 
+func minPerMileToMilesPerHour(s string) (f float64, e error) {
+	totalSeconds, err := minutesToSeconds(s)
+	if err != nil {
+		return 0.0, err
+	}
+
+	minPerMile := float64(totalSeconds / 60)
+
+	milesPerHour := 60 / minPerMile
+
+	return milesPerHour, nil
+}
+
 func kmPerHourToMilePerHour(s string) (f float64, e error) {
 	kmPerHour, err := strconv.ParseFloat(s, 64)
 	if err != nil {
@@ -157,4 +183,47 @@ func kmPerHourToMilePerHour(s string) (f float64, e error) {
 	milesPerHour := kmPerHour * conversionFactor
 
 	return milesPerHour, nil
+}
+
+func minutesToSeconds(timeString string) (float64, error) {
+	if len(timeString) == 1 {
+		minInt, _ := strconv.Atoi(timeString)
+		return float64(minInt * 60), nil
+	}
+
+	parts := strings.Split(timeString, ":")
+
+	if len(parts) != 2 {
+		return 0, fmt.Errorf("Invalid time format")
+	}
+
+	minutes, err := strconv.Atoi(parts[0])
+	if err != nil {
+		return 0, fmt.Errorf("Invalid minute format")
+	}
+
+	seconds, err := strconv.Atoi(parts[1])
+	if err != nil {
+		return 0, fmt.Errorf("Invalid second format")
+	}
+
+	totalSeconds := float64(minutes*60 + seconds)
+
+	return totalSeconds, nil
+}
+
+func floatToTimeString(f float64) (s string, e error) {
+	minutes := int(f)
+	seconds := (f - float64(minutes)) * 60
+
+	minutesStr := strconv.Itoa(minutes)
+	secondsStr := strconv.Itoa(int(seconds))
+
+	if seconds < 10 {
+		secondsStr = "0" + secondsStr
+	}
+
+	timeString := minutesStr + ":" + secondsStr
+
+	return timeString, nil
 }
