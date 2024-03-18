@@ -1,21 +1,21 @@
 package selections
 
 type options struct {
-	distanceUnit string
-	speedUnit    string
-	speedValue   string
+	DistanceUnit string
+	SpeedUnit    string
+	SpeedValue   string
 }
 
 var userSelections = map[string]options{
 	"from": {
-		distanceUnit: "",
-		speedUnit:    "",
-		speedValue:   "",
+		DistanceUnit: "",
+		SpeedUnit:    "",
+		SpeedValue:   "",
 	},
 	"to": {
-		distanceUnit: "",
-		speedUnit:    "",
-		speedValue:   "",
+		DistanceUnit: "",
+		SpeedUnit:    "",
+		SpeedValue:   "",
 	},
 }
 
@@ -24,8 +24,8 @@ func SelectDistanceUnit(from, to string) {
 	fromOptions := userSelections["from"]
 	toOptions := userSelections["to"]
 	// Update the fields
-	fromOptions.distanceUnit = from
-	toOptions.distanceUnit = to
+	fromOptions.DistanceUnit = from
+	toOptions.DistanceUnit = to
 	// Assign the updated "to" options struct back to the map
 	userSelections["from"] = fromOptions
 	userSelections["to"] = toOptions
@@ -36,8 +36,8 @@ func SelectSpeedUnit(from, to string) {
 	fromOptions := userSelections["from"]
 	toOptions := userSelections["to"]
 	// Update the fields
-	fromOptions.speedUnit = from
-	toOptions.speedUnit = to
+	fromOptions.SpeedUnit = from
+	toOptions.SpeedUnit = to
 	// Assign the updated "to" options struct back to the map
 	userSelections["from"] = fromOptions
 	userSelections["to"] = toOptions
@@ -48,8 +48,8 @@ func SelectSpeedValue(from, to string) {
 	fromOptions := userSelections["from"]
 	toOptions := userSelections["to"]
 	// Update the fields
-	fromOptions.speedValue = from
-	toOptions.speedValue = to
+	fromOptions.SpeedValue = from
+	toOptions.SpeedValue = to
 	// Assign the updated "to" options struct back to the map
 	userSelections["from"] = fromOptions
 	userSelections["to"] = toOptions

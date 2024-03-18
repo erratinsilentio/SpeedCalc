@@ -3,10 +3,7 @@ package start
 import (
 	"fmt"
 
-	"github.com/erratinsilentio/SpeedCalc/internal/kmToKm"
-	"github.com/erratinsilentio/SpeedCalc/internal/kmToMiles"
-	"github.com/erratinsilentio/SpeedCalc/internal/milesToKm"
-	"github.com/erratinsilentio/SpeedCalc/internal/milesToMiles"
+	"github.com/erratinsilentio/SpeedCalc/internal/prompts"
 	"github.com/erratinsilentio/SpeedCalc/internal/selections"
 	"github.com/manifoldco/promptui"
 )
@@ -28,18 +25,19 @@ func SpeedCalc() {
 	switch result {
 	case "miles to miles":
 		selections.SelectDistanceUnit("miles", "miles")
-		milesToMiles.GetPrompt()
+		prompts.MilesToMiles()
+		prompts.SpeedValues()
 
 	case "kilometers to kilometers":
 		selections.SelectDistanceUnit("kilometers", "kilometers")
-		kmToKm.GetPrompt()
+		prompts.KmToKm()
 
 	case "miles to kilometers":
 		selections.SelectDistanceUnit("miles", "kilometers")
-		milesToKm.GetPrompt()
+		prompts.MilesToKm()
 
 	case "kilometers to miles":
 		selections.SelectDistanceUnit("kilometers", "miles")
-		kmToMiles.GetPrompt()
+		prompts.KmToMiles()
 	}
 }
