@@ -43,16 +43,15 @@ func SelectSpeedUnit(from, to string) {
 	userSelections["to"] = toOptions
 }
 
-func SelectSpeedValue(from, to string) {
-	// Select to and from options
+func SelectSpeedValue(from string) {
+	// Select user options
 	fromOptions := userSelections["from"]
-	toOptions := userSelections["to"]
+
 	// Update the fields
 	fromOptions.SpeedValue = from
-	toOptions.SpeedValue = to
+
 	// Assign the updated "to" options struct back to the map
 	userSelections["from"] = fromOptions
-	userSelections["to"] = toOptions
 }
 
 func GetUserSelections() map[string]options {

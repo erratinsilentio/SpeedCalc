@@ -123,33 +123,22 @@ func KmToMiles() {
 }
 
 func SpeedValues() {
-	firstPrompt := promptui.Prompt{
-		Label: "first value:",
+	userSelections := selections.GetUserSelections()
+	fromSpeedUnit := userSelections["from"].SpeedUnit
+
+	prompt := promptui.Prompt{
+		Label: fmt.Sprintf("enter value in %s", fromSpeedUnit),
 	}
 
-	fromValueString, err := firstPrompt.Run()
+	fromValueString, err := prompt.Run()
 	if err != nil {
 		fmt.Println("Prompt failed, %v", err)
 	}
 
-	isFirstPromptValid, firstMessage := calculations.CheckIfPromptIsValid("from", fromValueString)
-	if !isFirstPromptValid {
-		fmt.Println(firstMessage)
+	isPromptValid, message := calculations.CheckIfPromptIsValid("from", fromValueString)
+	if !isPromptValid {
+		fmt.Println(message)
 	}
 
-	secondPrompt := promptui.Prompt{
-		Label: "second value:",
-	}
-
-	toValueString, err := secondPrompt.Run()
-	if err != nil {
-		fmt.Println("Prompt failed, %v", err)
-	}
-
-	isSecondPromptValid, secondMessage := calculations.CheckIfPromptIsValid("to", toValueString)
-	if !isSecondPromptValid {
-		fmt.Println(secondMessage)
-	}
-
-	selections.SelectSpeedValue(fromValueString, toValueString)
+	selections.SelectSpeedValue(fromValueString)
 }
