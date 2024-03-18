@@ -132,8 +132,8 @@ func SpeedValues() {
 		fmt.Println("Prompt failed, %v", err)
 	}
 
-	isPromptValid := calculations.CheckIfPromptIsValid("from", fromValueString)
+	isPromptValid, message := calculations.CheckIfPromptIsValid("from", fromValueString)
 	if !isPromptValid {
-		fmt.Println("Invalid value, use plain numbers like '9' or time in '6:30' format")
+		fmt.Println(message)
 	}
 }
