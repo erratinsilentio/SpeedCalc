@@ -55,12 +55,13 @@ func KmToKm() {
 }
 
 func MilesToKm() {
+	fmt.Println("here: ")
 
 	prompt := promptui.Select{
 		Label: "And...",
 		Items: []string{
 			"from miles/h to km/h",
-			"from miles/h min/km",
+			"from miles/h to min/km",
 			"from min/miles to min/km",
 			"from min/miles to km/h",
 		},
@@ -76,8 +77,8 @@ func MilesToKm() {
 	case "from miles/h to km/h":
 		selections.SelectSpeedUnit("miles/h", "km/h")
 		//todo
-	case "from km/h to miles/h":
-		selections.SelectSpeedUnit("km/h", "miles/h")
+	case "from miles/h to min/km":
+		selections.SelectSpeedUnit("miles/h", "min/km")
 		//todo
 	case "from min/miles to min/km":
 		selections.SelectSpeedUnit("min/miles", "min/km")
